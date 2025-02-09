@@ -1,0 +1,56 @@
+
+use med_history;
+
+create table personal_data
+(ID int,
+Name Varchar(30),
+Genser char(1),
+BirthDate date,
+primary key (ID))
+
+
+create table tests
+(ID int,
+test_Name Varchar(150),
+Mesure_Item float,
+test_info varchar(150),
+primary key (ID))
+
+
+create table Indiv_test
+(ID int,
+FK_tests int,
+test_date date,
+test_result float,
+FK_persdata int,
+primary key (ID),
+foreign key (FK_tests) references tests(ID),
+foreign key(FK_persdata) references personal_data(ID))
+
+create table drugs
+(ID int,
+drug_Name Varchar(150),
+Mesure_Item Varchar(50),
+drug_info varchar(150),
+primary key (ID))
+
+
+create table drug_taken
+(ID int,
+FK_drugs int,
+taken_dose float,
+date_start date,
+date_end date,
+FK_persdata int,
+primary key (ID),
+foreign key (FK_drugs) references drugs(ID),
+foreign key(FK_persdata) references personal_data(ID))
+
+
+******
+use med_history;
+Alter TABLE drug_taken drop foreign key drug_taken_ibfk_1;
+Alter TABLE drugs MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
+Alter TABLE drug_taken add constraint foreign key (FK_drugs) references drugs(ID);
+
+
