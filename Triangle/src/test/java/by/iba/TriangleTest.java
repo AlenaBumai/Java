@@ -25,13 +25,26 @@ public class TriangleTest {
     // Метод, который будет предоставлять параметры для теста
     static Stream<Arguments> provideTestCases() {
         return Stream.of(
-                Arguments.of("5\n5\n5\n", "allequal"),
-                Arguments.of("5\n5\n3\n", "twoequal"),
-                Arguments.of("5\n4\n3\n", "different"),
+                //**положительные целын числа
+                Arguments.of("1\n1\n1\n", "allequal"),// mimnimum
+                Arguments.of("100\n100\n100\n", "allequal"),
+                Arguments.of("4294967296\n4294967296\n4294967296\n", "allequal"),  //maxnimum int 4294967296
+
+                Arguments.of("100\n100\n100\n", "allequal"),
+                Arguments.of("100\n100\n200\n", "twoequal"),
+                Arguments.of("100\n200\n300\n", "different"),
+          //****отрицательные тесты - ненадлежащие числовые значения
+
                 Arguments.of("1\n1\n0\n", "wrong"),
                 Arguments.of("1\n1\n-1\n", "wrong"),
+                Arguments.of("1\n1\n4294967297\n", "wrong"),//maxnimum int+1
+                Arguments.of("1\n1\n1.11\n", "wrong"),
+
+//**********Буквы, символы, пробел, пусто
                 Arguments.of("1\n1\nF\n", "wrong"),
-                Arguments.of("1\n1\n*\n", "wrong")
+                Arguments.of("1\n1\n*\n", "wrong"),
+                Arguments.of(" \n \n \n", "wrong")
+
         );
     }
 
@@ -47,9 +60,8 @@ public class TriangleTest {
         System.setIn(in);
         int[] nums = getNum();
 
-        Stream<String> expectedValues = provideTestCases().map(arguments -> arguments.get(1));
+        org.junit.jupiter.api.Assertions.assertEquals((Object) expected, (Object) actual);
 
-        assertEquals(expected, actual);
     }
 
 
