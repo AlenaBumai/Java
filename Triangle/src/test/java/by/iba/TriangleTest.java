@@ -27,12 +27,16 @@ public class TriangleTest {
         return Stream.of(
                 //**положительные целын числа
                 Arguments.of("1\n1\n1\n", "allequal"),// mimnimum
+                Arguments.of("2\n3\n4\n", "allequal"),// mimnimum
+                Arguments.of("1\n1\n2\n", "allequal"),// mimnimum
+                
                 Arguments.of("100\n100\n100\n", "allequal"),
                 Arguments.of("4294967296\n4294967296\n4294967296\n", "allequal"),  //maxnimum int 4294967296
 
+
                 Arguments.of("100\n100\n100\n", "allequal"),
                 Arguments.of("100\n100\n200\n", "twoequal"),
-                Arguments.of("100\n200\n300\n", "different"),
+                Arguments.of("400\n200\n300\n", "different"),
           //****отрицательные тесты - ненадлежащие числовые значения
 
                 Arguments.of("1\n1\n0\n", "wrong"),
