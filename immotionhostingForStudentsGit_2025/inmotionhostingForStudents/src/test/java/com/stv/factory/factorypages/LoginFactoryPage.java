@@ -1,6 +1,6 @@
 package com.stv.factory.factorypages;
 
-
+import static com.stv.framework.core.lib.ImmotionPageURLs.START_URL;
 import com.stv.framework.core.drivers.MyDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,12 +24,15 @@ public class LoginFactoryPage extends FactoryPage{
 
     @FindBy(css = "#login-submit")
     private WebElement ButtonSubmit;
-//********
+
+    @FindBy(css ="https://secure1.inmotionhosting.com/index/login")
+    private WebElement loginPageLink;
+
     public boolean isLoginPageDisplayed() {
 
         return usernameInput.isDisplayed() && passwordInput.isDisplayed();
     }
-    //********
+
     public WebElement getUsernameField() {
         return usernameInput;
     }
@@ -50,21 +53,21 @@ public class LoginFactoryPage extends FactoryPage{
         forgotPasswordLink.click();
     }
 
-    //********************SubmitLoginClick
+    // клик по кнопки login
 
     public void buttonSubmitLoginClick(){
         ButtonSubmit.click();
 }
 
 
-//********************setUsername
+// заполнение поля Username
 
     public void setUsername(){
         usernameInput.sendKeys("abc@gmail.com");;
     }
+public String returnLoginPageLink(){return loginPageLink.toString();}
 
-
-//  *********** box-shadow
+//  box-shadow
     public boolean isInputFieldActive(WebElement field) {
 
 

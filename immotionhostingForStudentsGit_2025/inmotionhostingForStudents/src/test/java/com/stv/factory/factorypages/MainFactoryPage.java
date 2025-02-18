@@ -19,6 +19,12 @@ public class MainFactoryPage extends FactoryPage {
     @FindBy(css = "#navbarNavDropdown > div.nav-item.btn-login-container > a")
     WebElement loginButton;
 
+    // ****************** support
+    @FindBy(xpath = "*[@id=\"imh-main-menu\"]/div/nav/div/div[2]/ul/li[4]/a")
+    WebElement supportButton;
+
+
+
 
 
     public WebElement getNavigationPanel() {
@@ -40,8 +46,15 @@ public class MainFactoryPage extends FactoryPage {
         return navigationPanel.isDisplayed();
     }
 
-    // ****************** login
+    // *клик по  login
     public void clickLoginButton() {
         loginButton.click();
     }
+
+
+// клик по support
+public void clickSupportButton() {
+    supportButton.click();
+}
+
 }
