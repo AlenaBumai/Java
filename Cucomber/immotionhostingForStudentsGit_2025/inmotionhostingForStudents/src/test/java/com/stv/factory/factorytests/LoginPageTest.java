@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import static com.stv.framework.core.utils.Waiters.waitForElementVisible;
 import static org.testng.AssertJUnit.assertEquals;
+import com.stv.factory.factorypages.LoginFactoryPage;
 import com.stv.factory.factorypages.*;
 
 import java.time.Duration;
@@ -28,9 +29,7 @@ public class LoginPageTest extends BasicFactoryTest{
         loginFactoryPage.setUsername();
         loginFactoryPage.buttonSubmitLoginClick();
 //проверка что при вводе только usermane пользователь остался на той же странице
-        WebDriver driver = getDriver();
-        String newUrl = driver.getCurrentUrl();
-            assertEquals("https://secure1.inmotionhosting.com/index/login", newUrl);
+        assertEquals(loginFactoryPage.returnLoginPageLink(), getDriver().getCurrentUrl());
         }
 }
 

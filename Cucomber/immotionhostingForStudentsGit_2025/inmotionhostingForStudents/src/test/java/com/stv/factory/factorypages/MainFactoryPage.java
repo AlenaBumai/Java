@@ -15,11 +15,11 @@ public class MainFactoryPage extends FactoryPage {
     @FindBy(xpath = "//button[contains(text(), 'Accept All Cookies')]")
     private WebElement acceptAllCookiesButton;
 
-    // ****************** login
+    // кнопка login
     @FindBy(css = "#navbarNavDropdown > div.nav-item.btn-login-container > a")
     WebElement loginButton;
 
-    // ****************** support
+    // кнопка support
     @FindBy(xpath = "*[@id=\"imh-main-menu\"]/div/nav/div/div[2]/ul/li[4]/a")
     WebElement supportButton;
 
@@ -46,14 +46,15 @@ public class MainFactoryPage extends FactoryPage {
         return navigationPanel.isDisplayed();
     }
 
-    // ****************** login
+    // *клик по  login
     public void clickLoginButton() {
         loginButton.click();
     }
-}
 
-// ****************** support
+
+// клик по support
 public void clickSupportButton() {
     supportButton.click();
 }
+
 }
